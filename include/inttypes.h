@@ -2,6 +2,7 @@
 #define _INTTYPES_H
 
 #define NULL ((void*)0)
+#define sti (asm volatile("sti");) // set interrupt flag
 
 // Limits
 #define INT8_MIN		(-128)
@@ -20,6 +21,9 @@
 #define UINT64_MAX		0xFFFFFFFFFFFFFFFFULL
 
 // Data Types
+#define low_16(address) 	(uint16_t)((address) & 0xFFFF)
+#define high_16(address) 	(uint16_t)(((address) >> 16) & 0xFFFF)
+
 typedef unsigned int size_t;
 
 typedef signed char int8_t;
@@ -30,6 +34,5 @@ typedef signed int int32_t;
 typedef unsigned int uint32_t;
 typedef signed long long int64_t;
 typedef unsigned long long uint64_t;
-typedef char* string;
 
 #endif // _INTTYPES_H
